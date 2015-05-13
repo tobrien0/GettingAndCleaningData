@@ -66,6 +66,7 @@ Label the data set -    Since I already named the data set during the loading
                                 nMag for "Magnitude"
                                 n\\.mean for "Mean"
                                 n\\.std for "StandardDeviation"
+
 Output a tidy data set - using the data set from the prior step, obtain the 
                         average of each variable for each activity and subject.
                         This was accomplished by grouping by subject and activity
