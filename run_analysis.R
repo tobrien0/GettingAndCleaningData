@@ -71,6 +71,8 @@ names(dataSensorMeanAndStdDev) <- gsub('\\.std',"StandardDeviation",names(dataSe
 
 ### 5.From the data set in step 4, ################################################################
 ### create a second, independent tidy data set with the average of each variable for each activity and each subject.
-dataTidySet <- group_by(dataSensorMeanAndStdDev, Subject, Activity)
-dataTidySet <- summarise_each(dataTidySet, funs(mean))
-write.table(dataTidySet,paste(dirData,"tidy.txt", sep = "/"),row.name=FALSE)
+### because the project spelled out activity and then subject, I'm grouping in that order.
+### it also seems incorrect to take an average of an average.
+dataTidySet <- group_by(dataSensorMeanAndStdDev, Activity, Subject) %>%
+summarise_each(funs(mean)) %>%
+write.table(paste(dirData,"tidy.txt", sep = "/"),row.name=FALSE)
